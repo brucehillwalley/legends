@@ -1,0 +1,90 @@
+$chars : 10;
+$duration : .25s;
+$bounce : cubic-bezier(.4,1.4,.75,.9);
+$scale : 5000;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #39FF14;
+}
+
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2018/03/17/04/07/tunnel-3233082_640.jpg");
+  /* background-color:#d5d3cd; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Player Card Styles */
+
+.card-container{
+
+  min-width: 300px;
+  min-height: 432px;
+
+}
+
+.player-card{
+  height: 400px;
+  max-width: 280px;
+  min-width: 230px;
+  background-color:#141414;
+  border: 2px solid #39FF14;
+
+
+
+}
+
+.player-card:hover{
+  box-shadow: 3px 3px 20px 5px rgba(15, 255, 80, 0.3);
+}
+
+.player-logo{
+  height: 350px;
+  transition: transform 0.2s;
+  object-fit: cover;
+
+}
+
+
+.player-card:hover .player-logo{
+  transform: scale(0.95);
+}
+.head-container{
+  background-color: #141414;
+  box-shadow: 3px 3px 20px 5px rgba(15, 255, 80, 0.5);
+  /* border: 2px solid #39FF14; */
+  border-radius: 20px;
+  width: fit-content;
+}
+
+
+
+h1 {
+  font: 300 50px/1 courier;
+  white-space: nowrap;
+  color: #39FF14;
+}
+span {
+  display: inline-block;
+  animation: stretch $chars*$duration $bounce infinite;
+  transform-origin: center;
+  
+  @for $i from 1 through $chars {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $i*$duration;
+    }
+  }
+}
+  
+@keyframes stretch {
+  5% { 
+    transform: scaleX($scale);
+    opacity: .1;
+  }
+  15% { 
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
